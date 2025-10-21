@@ -1,9 +1,8 @@
-#修改TNAME: K2P 中的K2P为你需要编译的型号，注意名称要与configs/templates/目录下的名字相同
+# 修改TNAME: K2P 中的K2P为你需要编译的型号，注意名称要与configs/templates/目录下的名字相同
 name: Build-Padavan-K2P-5.0
 
 on: 
   workflow_dispatch:
-
 
 jobs:
   build:
@@ -53,7 +52,9 @@ jobs:
         sed -i '/CONFIG_FIRMWARE_INCLUDE_TRANSMISSION_WEB_CONTROL/d' .config
         sed -i '/CONFIG_FIRMWARE_INCLUDE_ARIA/d' .config
         sed -i '/CONFIG_FIRMWARE_INCLUDE_ARIA_WEB_CONTROL/d' .config
+        # 移除 Zerotier 插件及其配置项
         sed -i '/CONFIG_FIRMWARE_INCLUDE_ZEROTIER/d' .config
+        # 移除 FRP 插件及其配置项
         sed -i '/CONFIG_FIRMWARE_INCLUDE_FRPC/d' .config
         sed -i '/CONFIG_FIRMWARE_INCLUDE_ALIDDNS/d' .config
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS/d' .config
